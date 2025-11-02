@@ -22,14 +22,20 @@
             scroll-padding: 0;
         }
 
-        /* Make snap points more aggressive and instant */
+        /* Violent snap between sections only */
         section {
-            scroll-snap-stop: always;
             scroll-snap-align: start;
+            scroll-snap-stop: always;
         }
 
         body {
             overscroll-behavior-y: none;
+        }
+
+        /* Smooth scrolling WITHIN the dark section */
+        .content-section {
+            scroll-snap-type: none;
+            scroll-behavior: smooth;
         }
 
         body {
@@ -267,6 +273,29 @@
     </section>
 
     <script>
+        // Add smooth scroll delay/momentum
+        let isScrolling;
+        const contentSection = document.querySelector('.content-section');
+
+        document.addEventListener('wheel', function(e) {
+            if (contentSection && window.scrollY > window.innerHeight * 0.5) {
+                e.preventDefault();
+
+                clearTimeout(isScrolling);
+
+                const scrollAmount = e.deltaY * 0.5; // Reduce scroll speed by half
+
+                window.scrollBy({
+                    top: scrollAmount,
+                    behavior: 'auto'
+                });
+
+                isScrolling = setTimeout(function() {
+                    // Scroll has ended
+                }, 100);
+            }
+        }, { passive: false });
+
         // Fade in elements on scroll
         const observerOptions = {
             threshold: 0.15,
