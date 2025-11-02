@@ -282,6 +282,16 @@
         }
 
         @media (max-width: 480px) {
+            /* Ensure snap is disabled on small mobile too */
+            html {
+                scroll-snap-type: none;
+            }
+
+            section {
+                scroll-snap-align: none;
+                scroll-snap-stop: normal;
+            }
+
             .artist-logo {
                 max-width: 250px;
             }
