@@ -19,7 +19,7 @@
 
         html {
             scroll-snap-type: y mandatory;
-            scroll-behavior: auto;
+            scroll-behavior: smooth;
             scroll-padding: 0;
         }
 
@@ -33,9 +33,11 @@
             overscroll-behavior-y: none;
         }
 
-        /* Smooth scrolling WITHIN the dark section */
+        /* Dark section slides over white */
         .content-section {
-            scroll-snap-type: none;
+            position: relative;
+            z-index: 10;
+            margin-top: 100vh;
         }
 
         body {
@@ -53,8 +55,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            scroll-snap-align: start;
-            position: relative;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1;
         }
 
         .artist-logo {
@@ -290,12 +294,12 @@
         </svg>
     </a>
 
-    <!-- WHITE INTRO SECTION -->
+    <!-- WHITE INTRO SECTION (Fixed Background) -->
     <section class="intro-section">
         <img src="./public/logo.svg" alt="Cesare Picco" class="artist-logo">
     </section>
 
-    <!-- DARK CONTENT SECTION -->
+    <!-- DARK CONTENT SECTION (Slides Over) -->
     <section class="content-section">
         <div class="container">
             <h2 class="title fade-in">
