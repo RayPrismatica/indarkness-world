@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/joline" rel="stylesheet">
 
     <style>
         * {
@@ -57,11 +58,10 @@
             position: relative;
         }
 
-        .artist-name-intro {
-            font-size: 72px;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            color: #1a1a1a;
+        .artist-logo {
+            max-width: 400px;
+            width: 80%;
+            height: auto;
             animation: fadeIn 1.5s ease-in;
         }
 
@@ -167,6 +167,24 @@
             margin-top: 6rem;
         }
 
+        .quote {
+            margin-top: 8rem;
+            padding-top: 4rem;
+            border-top: 1px solid rgba(232, 232, 232, 0.2);
+            font-style: italic;
+            opacity: 0.85;
+            line-height: 1.9;
+        }
+
+        .quote-attribution {
+            margin-top: 1.5rem;
+            font-style: normal;
+            font-size: 14px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            opacity: 0.5;
+        }
+
         .cursor {
             color: #00ff41;
             animation: pulse 1.5s ease-in-out infinite;
@@ -182,9 +200,63 @@
             }
         }
 
+        /* Website link icon */
+        .website-link {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            width: 40px;
+            height: 40px;
+            border: 1.5px solid #e8e8e8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            opacity: 0.6;
+        }
+
+        .website-link:hover {
+            opacity: 1;
+            border-color: #00ff41;
+            transform: scale(1.1);
+        }
+
+        .website-link svg {
+            width: 18px;
+            height: 18px;
+            stroke: #e8e8e8;
+            transition: stroke 0.3s ease;
+        }
+
+        .website-link:hover svg {
+            stroke: #00ff41;
+        }
+
+        /* Hide on white section */
+        .intro-section .website-link {
+            border-color: #1a1a1a;
+            opacity: 0.4;
+        }
+
+        .intro-section .website-link svg {
+            stroke: #1a1a1a;
+        }
+
+        .intro-section .website-link:hover {
+            opacity: 0.8;
+            border-color: #1a1a1a;
+        }
+
+        .intro-section .website-link:hover svg {
+            stroke: #1a1a1a;
+        }
+
         @media (max-width: 768px) {
-            .artist-name-intro {
-                font-size: 48px;
+            .artist-logo {
+                max-width: 300px;
             }
 
             .container {
@@ -198,8 +270,8 @@
         }
 
         @media (max-width: 480px) {
-            .artist-name-intro {
-                font-size: 36px;
+            .artist-logo {
+                max-width: 250px;
             }
 
             .container {
@@ -214,9 +286,16 @@
     </style>
 </head>
 <body>
+    <!-- Website Link Icon -->
+    <a href="https://www.cesarepicco.com/" target="_blank" class="website-link" aria-label="Visit cesarepicco.com">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </a>
+
     <!-- WHITE INTRO SECTION -->
     <section class="intro-section">
-        <h1 class="artist-name-intro">Cesare Picco</h1>
+        <img src="public/logo.svg" alt="Cesare Picco" class="artist-logo">
     </section>
 
     <!-- DARK CONTENT SECTION -->
@@ -251,7 +330,7 @@
             </div>
 
             <p class="lead-in fade-in">
-                Each performance exists only once. It can n<span class="cursor">e</span>ver be repeated. The master documentation is not a recording of the work. It IS the work, capturing a moment of pure improvisation that will never exist again. It all happens once.
+                Each performance exists only once. More than one hundred times since 2009, each one unrepeatable. It can n<span class="cursor">e</span>ver be repeated. The master documentation is not a recording of the work. It IS the work, capturing a moment of pure improvisation that will never exist again. It all happens once.
             </p>
 
             <p class="statement fade-in">
@@ -268,6 +347,11 @@
                 The practice is ongoing.<br>
                 What happens in darkness continues.<br>
                 Long after th<span class="cursor">e</span> lights come back on.
+            </div>
+
+            <div class="quote fade-in">
+                "And as light returns some audience were moving their bodies to the rhythm and some covering their eyelids to wipe away their tears."
+                <div class="quote-attribution">The Asahi Shimbun</div>
             </div>
         </div>
     </section>
